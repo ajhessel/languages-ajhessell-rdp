@@ -219,6 +219,7 @@ public:
     if (g.ch == '/') return Token::divide(g.line,g.col);
     if (g.ch == '(') return Token::lparen(g.line,g.col);
     if (g.ch == ')') return Token::rparen(g.line,g.col);
+    if (g.ch == '^') return Token::power(g.line, g.col);
     if (g.ch >= '0' && g.ch <= '9') {
       std::string strnum;
       bool decimal = false;
