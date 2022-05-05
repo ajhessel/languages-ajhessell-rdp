@@ -13,6 +13,7 @@ std::string TokenTypeToJSON(TokenType tokenType) {
   case TokenType::times: return "times";
   case TokenType::lparen: return "lparen";
   case TokenType::rparen: return "rparen";
+  case TokenType::power: return "power";
   case TokenType::eof: return "eof";
   case TokenType::unrecognized: return "unrecognized";
   default: throw std::range_error("invalid token type");
@@ -29,6 +30,7 @@ TokenType JSONToTokenType(const std::string &jsonTokenType) {
   if (jsonTokenType == "times") return TokenType::times;
   if (jsonTokenType == "lparen") return TokenType::lparen;
   if (jsonTokenType == "rparen") return TokenType::rparen;
+  if (jsonTokenType == "power") return TokenType::power;
   if (jsonTokenType == "eof") return TokenType::eof;
   if (jsonTokenType == "unrecognized") return TokenType::unrecognized;
   throw std::range_error("invalid token string");
@@ -96,6 +98,9 @@ Token::Ptr Token::lparen(int line, int col) {
 
 Token::Ptr Token::rparen(int line, int col) {
   return base(TokenType::rparen,line,col);
+}
+Token::Ptr Token::power(int line, int col){
+  return base(TokenType::power, line, col);
 }
 
 Token::Ptr Token::eof(int line, int col) {

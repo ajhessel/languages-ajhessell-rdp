@@ -32,6 +32,7 @@ public:
   static Ptr divide(int line, int col);  
   static Ptr lparen(int line, int col);
   static Ptr rparen(int line, int col);
+  static Ptr power(int line, int col);
   static Ptr eof(int line, int col);
   static Ptr unrecognized(const std::string &what, int line, int col);
   
