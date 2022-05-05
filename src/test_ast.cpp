@@ -95,5 +95,17 @@ TEST(AST,Recall) {
   ASSERT_EQ(ast->toJSON(),expect);
 }
 
+// Base AST case
+TEST(AST,Power) {
+  int line = 13;
+  int col = 32;
+  Token::Ptr token = Token::power(line,col);
+  AST::Ptr ast = AST::power(token,number(4),number(5))
+
+  JSON expect=u8R"-=-({"args":[{"ast-type":"number","token":{"col":2,"line":13,"token-type":"number","type":"token","value":4.0},"type":"ast","value":4.0},{"ast-type":"number","token":{"col":2,"line":13,"token-type":"number","type":"token","value":5.0},"type":"ast","value":5.0}],"ast-type":"power","token":{"col":32,"line":13,"token-type":"power","type":"token"},"type":"ast"})-=-"_JSON;
+
+  ASSERT_EQ(ast->getType(),ASTType::power);
+  ASSERT_EQ(ast->toJSON(),expect);
+}
 
 
