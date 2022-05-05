@@ -1,5 +1,5 @@
 #include "vm.h"
-
+#include <cmath>
 #include "ast.h"
 
 VM::VM() {
@@ -30,6 +30,10 @@ JSON times(const JSON &a, const JSON &b) {
 
 JSON divide(const JSON &a, const JSON &b) {
   return a.get<double>() / b.get<double>();
+}
+
+JSON power(const JSON &a, const JSON &b){
+  return std::pow(a.get<double>(), b.get<double>());
 }
 
 JSON VM::run(AST::Ptr prog) {
@@ -92,6 +96,14 @@ void VM::exec(AST::Ptr prog, VM::Stack &stack) {
       push(stack,divide(a,b));
     }
     break;
+  case ASTType::power:
+    {
+      exec(prog->args.at(0),stack);
+      exec(prog->args.at(1),stack);
+      auto a = pop(stack);
+      auto b = pop(stack);
+      push(stack,power(a,b));
+    }
   default:
     throw std::range_error(prog->toJSON());
   }
