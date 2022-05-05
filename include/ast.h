@@ -4,7 +4,7 @@
 
 #include "token.h"
 
-enum class ASTType { number,recall,store,add,sub,times,divide,unrecognized };
+enum class ASTType { number,recall,store,add,sub,times,divide,power,unrecognized };
 
 std::string ASTTypeToJSON(enum ASTType astType);
 enum ASTType JSONToASTType(const std::string &jsonASTType);
@@ -25,6 +25,7 @@ class AST {
   static Ptr sub(Token::Ptr token, Ptr arg0, Ptr arg1);
   static Ptr times(Token::Ptr token, Ptr arg0, Ptr arg1);
   static Ptr divide(Token::Ptr token, Ptr arg0, Ptr arg1);
+  static Ptr power(Token::Ptr token, Ptr arg0, Ptr arg1);
   static Ptr store(Token::Ptr token, Ptr arg0);
   static Ptr recall(Token::Ptr token);
   static Ptr unrecognized(Token::Ptr token);
