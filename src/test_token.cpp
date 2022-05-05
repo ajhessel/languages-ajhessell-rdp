@@ -89,6 +89,7 @@ TEST(Token,Simple) {
     case TokenType::sub:    token=Token::sub(line,col);    strTokenType="sub";    break;
     case TokenType::times:  token=Token::times(line,col);  strTokenType="times";  break;
     case TokenType::divide: token=Token::divide(line,col); strTokenType="divide"; break;
+    case TokenType::power:  token=Token::power(line,col);  strTokenType="power";  break;
     case TokenType::lparen: token=Token::lparen(line,col); strTokenType="lparen"; break;
     case TokenType::rparen: token=Token::rparen(line,col); strTokenType="rparen"; break;
     case TokenType::eof:    token=Token::eof(line,col);    strTokenType="eof";    break;

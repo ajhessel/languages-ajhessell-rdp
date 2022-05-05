@@ -28,10 +28,10 @@ This one instead
 
 Tests:
 	Test case in test_ast.cpp (already done)
-	Test case in test_token.cpp	
+	Test case in test_token.cpp	(done)
 	The cases we came up with go in examples.cpp
 
 Implementation:
-	token.cpp and token.h
-	ast.cpp and ast.h
-	parser.cpp but not parser.h, scanner.cpp
+	token.cpp and token.h (Jesse)
+	ast.cpp and ast.h (Alex)
+	parser.cpp but not parser.h, scanner.cpp (Justin)
