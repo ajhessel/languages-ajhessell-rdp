@@ -5,7 +5,7 @@
 enum class TokenType { 
     identifier,keyword,number,
     add,sub,times,divide, 
-    lparen, rparen,eof,unrecognized 
+    lparen, power, rparen,eof,unrecognized 
 };
 
 std::string TokenTypeToJSON(TokenType tokenType);
