@@ -93,6 +93,7 @@ struct RealParser : Parser {
   Token::Ptr SUB()    { return next(TokenType::sub); }
   Token::Ptr TIMES()    { return next(TokenType::times); }
   Token::Ptr DIVIDE()    { return next(TokenType::divide); }
+  Token::Ptr POWER()  { return next(TokenType::power);} //added this?
   Token::Ptr END_OF_FILE()    { return next(TokenType::eof); }  
 
   Token::Ptr KEYWORD(const std::string &word) {
