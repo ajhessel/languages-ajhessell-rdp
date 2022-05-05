@@ -16,7 +16,13 @@
 
 This one instead
 3. 4*2*3^2 = 72 Alex
-
+			*
+		   / \
+		  4   *   
+		 	 / \
+			2	^
+			   / \
+			  3   2		
 Tests:
 	Test case in test_ast.cpp (already done)
 	Test case in test_token.cpp	(done)
