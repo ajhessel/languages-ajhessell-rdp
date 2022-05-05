@@ -8,6 +8,7 @@ std::string ASTTypeToJSON(enum ASTType astType) {
   case ASTType::add: return "add";
   case ASTType::sub: return "sub";
   case ASTType::divide: return "divide";
+  case ASTType::power: return "power";
   case ASTType::times: return "times";
   case ASTType::store: return "store";
   case ASTType::recall: return "recall";
