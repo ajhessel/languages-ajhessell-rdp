@@ -23,5 +23,6 @@ Redundent
 	  /   \
      2     2
 
+This one instead
 4*2*3^2 = 72
 	
