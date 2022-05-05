@@ -87,6 +87,31 @@ Example::Ptr ex2() {
   return Example::Ptr(new Example(input,tokens,ast,ans));
 }
 
+Example::Ptr ex3() {
+  int line = 0, col = 0;
+  std::string input = "(3+2)^2";
+
+  std::vector<Token::Ptr> tokens;
+  Token::Ptr tk0lparen = append(tokens, Token::lparen(line, col++));
+  Token::Ptr tk1Three = append(tokens, Token::number(3,line,col++));
+  Token::Ptr tk2Add = append(tokens,Token::add(line,col++));
+  Token::Ptr tk3Two = append(tokens, Token::number(2,line,col++));
+  Token::Ptr tk4rparen = append(tekns, Token::rparen(line, col++));
+  Token::Ptr tk5Power = append(tokens, Token::power(line,col++));
+  Token::Ptr tk6Two = append(tokens, Token::number(2,line,col++));
+
+  AST::Ptr ast = 
+  AST::power(tk5Power, 
+  AST::add(tk2Add,
+  AST::number(tk1Three),
+  AST::number(tk6Two)),
+  AST::number(tk3Two))
+
+  double ans = 25;
+
+  return Example::Ptr(new Example(input,tokens,ast,ans));
+}
+
 //3+2^2 (Juston)
 Example::Ptr ex4() {
   int line = 0, col = 0;
