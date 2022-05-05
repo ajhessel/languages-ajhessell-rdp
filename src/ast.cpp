@@ -22,6 +22,7 @@ enum ASTType JSONToASTType(const std::string &jsonASTType) {
   if (jsonASTType == "add") return ASTType::add;
   if (jsonASTType == "sub") return ASTType::sub;
   if (jsonASTType == "divide") return ASTType::divide;
+  if (jsonASTType == "power") return ASTType::power;
   if (jsonASTType == "times") return ASTType::times;
   if (jsonASTType == "store") return ASTType::store;
   if (jsonASTType == "recall") return ASTType::recall;
@@ -100,6 +101,14 @@ AST::Ptr AST::divide(Token::Ptr token, AST::Ptr arg0, AST::Ptr arg1) {
   }
 }
 
+AST::Ptr AST::power(Token::Ptr token, AST::Ptr arg0, AST::Ptr arg1){
+  if (token->getType() == TokenType::power){
+    return Ptr(new AST(token,baseJsonify,arg0,arg1));
+  } else {
+    throw std::range_error("not power");
+  }
+}
+
 
 AST::Ptr AST::store(Token::Ptr token, AST::Ptr arg0) {
   if (token->getType() == TokenType::keyword && token->getWord() == "S") {
@@ -126,6 +135,7 @@ ASTType AST::getType() const {
   case TokenType::sub: return ASTType::sub;
   case TokenType::times: return ASTType::times;
   case TokenType::divide: return ASTType::divide;
+  case TokenType::power: return ASTType::power;
   case TokenType::keyword:
     if (token->getWord() == "S") return ASTType::store;
     if (token->getWord() == "R") return ASTType::recall;

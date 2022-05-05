@@ -1,4 +1,4 @@
-(3+2)^2 = 25
+1. (3+2)^2 = 25 Jesse
 		
 		   ^
 		 /   \
@@ -7,16 +7,7 @@
 	  3   2     
 
 
-Redundent
-2^(3+2) = 32
-		
-		   ^
-		 /   \
-		2	  +		
-			 / \
-			3   2     
-
-3+2^2 = 7
+2. 3+2^2 = 7 Juston
 		  +
 		 / \
 		^   3
@@ -24,7 +15,7 @@ Redundent
      2     2
 
 This one instead
-4*2*3^2 = 72
+3. 4*2*3^2 = 72 Alex
 
 Tests:
 	Test case in test_ast.cpp (already done)
@@ -32,6 +23,7 @@ Tests:
 	The cases we came up with go in examples.cpp
 
 Implementation:
-	token.cpp and token.h (Jesse)
-	ast.cpp and ast.h (Alex)
-	parser.cpp but not parser.h, scanner.cpp (Justin)
+	token.cpp and token.h (Jesse) (done)
+	ast.cpp and ast.h (Alex) (done)
+	parser.cpp but not parser.h, scanner.cpp (Juston) (done)
+	vm.cpp (Jesse)
