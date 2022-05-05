@@ -135,6 +135,7 @@ ASTType AST::getType() const {
   case TokenType::sub: return ASTType::sub;
   case TokenType::times: return ASTType::times;
   case TokenType::divide: return ASTType::divide;
+  case TokenType::power: return ASTType::power;
   case TokenType::keyword:
     if (token->getWord() == "S") return ASTType::store;
     if (token->getWord() == "R") return ASTType::recall;
