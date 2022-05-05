@@ -25,4 +25,13 @@ Redundent
 
 This one instead
 4*2*3^2 = 72
-	
+
+Tests:
+	Test case in test_ast.cpp (already done)
+	Test case in test_token.cpp	
+	The cases we came up with go in examples.cpp
+
+Implementation:
+	token.cpp and token.h
+	ast.cpp and ast.h
+	parser.cpp but not parser.h, scanner.cpp
