@@ -128,12 +128,37 @@ Example::Ptr ex4() {
   AST::number(tk0Three), 
   AST::power(tk3Power,
   AST::number(tk2Two),
-  AST::number(tk4Two)))
+  AST::number(tk4Two)));
 
   double ans = 7;
 
   return Example::Ptr(new Example(input,tokens,ast,ans));
 }
+
+// 4*2*3^2 = 72
+Example::Ptr ex5(){
+  int line=0, col=0;
+  std::string input = "4*2*3^2";
+
+  std::vector<Token::Ptr> tokens;
+  Token::Ptr tk0Four = append(tokens,Token::number(4,line,col++));
+  Token::Ptr tk1Times = append(tokens,Token::times(line,col++));
+  Token::Ptr tk2Two = append(tokens,Token::number(2,line,col++));
+  Token::Ptr tk3times = append(tokens,Token::times(line,col++));
+  Token::Ptr tk4Three = append(tokens,Token::number(3,line,col++));
+  Token::Ptr tk5Power = append(tokens,Token::power(line,col++));
+  Token::Ptr tk6Two = append(tokens,Token::number(2,line,col++));
+
+  AST::Ptr ast = 
+    AST::times(tk1Times,
+        AST::number(tk0Four), AST::times(tk3times,
+                                AST::number(tk2Two),AST::power(tk5Power,
+                                          AST::number(tk4Three),AST::number(tk6Two)
+  )));
+
+  double ans = 72;
+
+  return Example::Ptr(new Example(input, tokens, ast, ans));}
 
 std::size_t Example::size() { return 3; }
 Example::Ptr Example::example(int k) {
