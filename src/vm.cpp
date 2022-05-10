@@ -33,7 +33,7 @@ JSON divide(const JSON &a, const JSON &b) {
 }
 
 JSON power(const JSON &a, const JSON &b){
-  return std::pow(a.get<double>(), b.get<double>());
+  return std::pow(b.get<double>(), a.get<double>());
 }
 
 JSON VM::run(AST::Ptr prog) {
@@ -104,6 +104,7 @@ void VM::exec(AST::Ptr prog, VM::Stack &stack) {
       auto b = pop(stack);
       push(stack,power(a,b));
     }
+    break;
   default:
     throw std::range_error(prog->toJSON());
   }

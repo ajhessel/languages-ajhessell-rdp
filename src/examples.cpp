@@ -99,13 +99,14 @@ Example::Ptr ex3() {
   Token::Ptr tk4rparen = append(tokens, Token::rparen(line, col++));
   Token::Ptr tk5Power = append(tokens, Token::power(line,col++));
   Token::Ptr tk6Two = append(tokens, Token::number(2,line,col++));
+  Token::Ptr tk7Eof = append(tokens, Token::eof(line, col++));
 
   AST::Ptr ast = 
   AST::power(tk5Power, 
-  AST::add(tk2Add,
-  AST::number(tk1Three),
-  AST::number(tk6Two)),
-  AST::number(tk3Two));
+    AST::add(tk2Add,
+      AST::number(tk1Three),
+        AST::number(tk6Two)),
+          AST::number(tk3Two));
 
   double ans = 25;
 
@@ -123,6 +124,7 @@ Example::Ptr ex4() {
   Token::Ptr tk2Two = append(tokens, Token::number(2,line,col++));
   Token::Ptr tk3Power = append(tokens, Token::power(line,col++));
   Token::Ptr tk4Two = append(tokens, Token::number(2,line,col++));
+    Token::Ptr tk5Eof = append(tokens, Token::eof(line, col++));
 
   AST::Ptr ast = AST::add(tk1Add, 
   AST::number(tk0Three), 
@@ -148,6 +150,7 @@ Example::Ptr ex5(){
   Token::Ptr tk4Three = append(tokens,Token::number(3,line,col++));
   Token::Ptr tk5Power = append(tokens,Token::power(line,col++));
   Token::Ptr tk6Two = append(tokens,Token::number(2,line,col++));
+    Token::Ptr tk7Eof = append(tokens, Token::eof(line, col++));
 
   AST::Ptr ast = 
     AST::times(tk1Times,
