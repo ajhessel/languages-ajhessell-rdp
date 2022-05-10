@@ -1,6 +1,7 @@
 #include "vm.h"
 #include <cmath>
 #include "ast.h"
+#include <iostream>
 
 VM::VM() {
   heap["store"]=0;
@@ -33,7 +34,9 @@ JSON divide(const JSON &a, const JSON &b) {
 }
 
 JSON power(const JSON &a, const JSON &b){
-  return std::pow(a.get<double>(), b.get<double>());
+  double x = std::pow(a.get<double>(), b.get<double>());
+  std::cout << "Power function: " << x << std::endl;
+  return x;
 }
 
 JSON VM::run(AST::Ptr prog) {
@@ -102,7 +105,7 @@ void VM::exec(AST::Ptr prog, VM::Stack &stack) {
       exec(prog->args.at(1),stack);
       auto a = pop(stack);
       auto b = pop(stack);
-      push(stack,power(a,b));
+      push(stack,power(b,a));
     }
   default:
     throw std::range_error(prog->toJSON());

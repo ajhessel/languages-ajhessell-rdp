@@ -108,7 +108,8 @@ struct RealParser : Parser {
 
   // all ::= expression END_OF_FILE.
   // expression :: = term ADD expression | term.
-  // term ::= factor_opt_store TIMES term | factor_opt_store.
+  // term ::= exp TIMES term | exp.
+  // exp ::= factor_opt_store POWER factor_opt_store | factor_opt_store. ?? <---- Where in the grammar?
   // factor_opt_store ::= factor STORE | factor.
   // factor ::= number | recall | LPAREN expression RPAREN.
 
@@ -171,15 +172,44 @@ struct RealParser : Parser {
     return AST::Ptr(NULL);
   }
 
-  // term = factor TIMES term
-  AST::Ptr termfTt() {
+  //exponent = factor POWER factor
+  AST::Ptr exponfPf(){
     auto m = mark();
-    AST::Ptr f;
+    AST::Ptr f0;
+    Token::Ptr P;
+    AST::Ptr f1;
+    if ((f0=factor())&& (P=POWER()) && (f1=factor())){
+      accept(m);
+      return AST::power(P,f0,f1);
+    }
+    reject(m);
+    return AST::Ptr(NULL);
+  }
+
+  //exponent = factor POWER factor | factor
+  AST::Ptr exponent() {
+    auto m = mark();
+    AST::Ptr e;
+    if ((e = exponfPf()) || (e = factor())){
+      accept(m);
+      if (debug){
+        std::cerr << "accepted exponent" << e->toJSON() << std::endl;
+      }
+      return e;
+    }
+    reject(m);
+    return AST::Ptr(NULL);
+  }
+
+  // term = factor TIMES term
+  AST::Ptr termeTt() {
+    auto m = mark();
+    AST::Ptr e;
     Token::Ptr T;
     AST::Ptr t;
-    if ((f=factor()) && (T=TIMES()) && (t=term())) {
+    if ((e=exponent()) && (T=TIMES()) && (t=term())) {
       accept(m);
-      return AST::times(T,f,t);
+      return AST::times(T,e,t);
     }
     reject(m);
     return AST::Ptr(NULL);  
@@ -188,17 +218,18 @@ struct RealParser : Parser {
   // term = factor TIMES term | factor
   AST::Ptr term() {
     auto m = mark();
-    AST::Ptr t;
-    if ((t = termfTt())||(t=factor())) {
+    AST::Ptr e;
+    if ((e = termeTt())||(e=exponent())) {
       accept(m);
       if (debug) {
-	std::cerr << "accepted term " << t->toJSON() << std::endl;
+	std::cerr << "accepted term " << e->toJSON() << std::endl;
       }
-      return t;
+      return e;
     }
     reject(m);
     return AST::Ptr(NULL);
   }
+
 
   // expression = term ADD expressioin
   AST::Ptr expressiontAe() {

@@ -225,9 +225,9 @@ public:
       bool decimal = false;
       got h=g;
       while ((h.ch >= '0' && h.ch <= '9') || (!decimal && h.ch == '.')) {
-	strnum.push_back(h.ch);
-	if (h.ch == '.') { decimal = true; }
-	h = get();
+        strnum.push_back(h.ch);
+        if (h.ch == '.') { decimal = true; }
+        h = get();
       }
       unget(h);
       double value;

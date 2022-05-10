@@ -92,15 +92,16 @@ Token::Ptr Token::divide(int line, int col) {
   return base(TokenType::divide,line,col);
 }
 
+Token::Ptr Token::power(int line, int col){
+  return base(TokenType::power, line, col);
+}
+
 Token::Ptr Token::lparen(int line, int col) {
   return base(TokenType::lparen,line,col);
 }
 
 Token::Ptr Token::rparen(int line, int col) {
   return base(TokenType::rparen,line,col);
-}
-Token::Ptr Token::power(int line, int col){
-  return base(TokenType::power, line, col);
 }
 
 Token::Ptr Token::eof(int line, int col) {

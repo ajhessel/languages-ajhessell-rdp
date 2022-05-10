@@ -149,26 +149,41 @@ Example::Ptr ex5(){
   Token::Ptr tk5Power = append(tokens,Token::power(line,col++));
   Token::Ptr tk6Two = append(tokens,Token::number(2,line,col++));
 
-  AST::Ptr ast = 
-    AST::times(tk1Times,
-        AST::number(tk0Four), AST::times(tk3times,
-                                AST::number(tk2Two),AST::power(tk5Power,
-                                          AST::number(tk4Three),AST::number(tk6Two)
-  )));
+  AST::Ptr ast = AST::times(tk1Times, AST::number(tk0Four),
+                    AST::times(tk3times,AST::number(tk2Two),
+                        AST::power(tk5Power,AST::number(tk4Three),AST::number(tk6Two))));
 
   double ans = 72;
 
   return Example::Ptr(new Example(input, tokens, ast, ans));}
 
-std::size_t Example::size() { return 6; }
+//2^1
+Example::Ptr ex6(){
+  int line=0, col=0;
+  std::string input = "2^1";
+
+  std::vector<Token::Ptr> tokens;
+  Token::Ptr tk0Two = append(tokens, Token::number(2,line,col++));
+  Token::Ptr tk1Power = append(tokens, Token::power(line,col++));
+  Token::Ptr tk2One = append(tokens, Token::number(1,line,col++));
+  Token::Ptr tk3Eof = append(tokens,Token::eof(line,col++));
+
+  AST::Ptr ast = AST::power(tk1Power,AST::number(tk0Two),AST::number(tk2One));
+
+  double ans = 2;
+
+  return Example::Ptr(new Example(input, tokens, ast, ans));
+}
+
+std::size_t Example::size() { return 4; }
 Example::Ptr Example::example(int k) {
   switch(k) {
   case 0: return ex0();
   case 1: return ex1();
   case 2: return ex2();   
-  case 3: return ex3();
-  case 4: return ex4();
-  case 5: return ex5(); 
+  case 3: return ex6();
+  //case 4: return ex4();
+  //case 3: return ex5(); 
   default: return NULL;
   }
 }
