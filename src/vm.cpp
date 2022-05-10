@@ -105,7 +105,7 @@ void VM::exec(AST::Ptr prog, VM::Stack &stack) {
       exec(prog->args.at(1),stack);
       auto a = pop(stack);
       auto b = pop(stack);
-      push(stack,power(b,a));
+      push(stack,power(b,a)); // also had to switch this for it to work?
     }
   default:
     throw std::range_error(prog->toJSON());
