@@ -3,6 +3,9 @@
 This is the infrastructure (thinking about how interepreters/compilers
 are put together generally).  For a simple calculator with a store/recall
 feature.
+## paper link
+
+[Power RDP Plan](https://docs.google.com/document/d/1AfHRaVbfo-w0hu4_Iy5I5S7zu_5T0OfRPBTI04Bjzvs/edit)
 
 ## structure
 

@@ -22,7 +22,15 @@ This one instead
 		 	 / \
 			2	^
 			   / \
-			  3   2		
+			  3   2	
+			  
+			 *
+		   /   \
+		  *     ^
+		/  \   / \
+	   4   2  3   2	
+		 
+		 
 Tests:
 	Test case in test_ast.cpp (already done)
 	Test case in test_token.cpp	(done)
