@@ -178,15 +178,15 @@ Example::Ptr ex6(){
   return Example::Ptr(new Example(input, tokens, ast, ans));
 }
 
-std::size_t Example::size() { return 4; }
+std::size_t Example::size() { return 6; }
 Example::Ptr Example::example(int k) {
   switch(k) {
   case 0: return ex0();
   case 1: return ex1();
   case 2: return ex2();   
   case 3: return ex6();
-  //case 4: return ex4();
-  //case 3: return ex5(); 
+  case 4: return ex4();
+  case 5: return ex5(); 
   default: return NULL;
   }
 }
